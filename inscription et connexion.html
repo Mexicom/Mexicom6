@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mexicom - Inscription et Connexion</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background-color: #fff;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        .container h1 {
+            margin-bottom: 1em;
+            font-size: 24px;
+            color: #333;
+        }
+        .container p {
+            margin-bottom: 1em;
+            color: #666;
+        }
+        .form-group {
+            margin-bottom: 1em;
+            position: relative;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+            color: #333;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.5em;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 0.75em;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-top: 1em;
+        }
+        .btn:hover {
+            background-color: #0056b3;
+        }
+        .toggle-btn {
+            background-color: #28a745;
+        }
+        .toggle-btn:hover {
+            background-color: #218838;
+        }
+        .links {
+            margin-top: 1em;
+        }
+        .links a {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .links a:hover {
+            text-decoration: underline;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="form-title">BIENVENUE SUR LA PLATEFORME MEXICOM</h1>
+        <p>Veuillez remplir le formulaire ci-dessous.</p>
+
+        <!-- Formulaire d'inscription -->
+        <form id="registration-form" class="form" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="name">Nom et prénom</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="referral">Code de parrainage</label>
+                <input type="text" id="referral" name="referral">
+            </div>
+            <div class="form-group">
+                <label for="password">Mode de passe</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <div class="form-group">
+                <label for="confirm-password">Veuillez confirmer votre mode de passe</label>
+                <input type="password" id="confirm-password" name="confirm-password" required>
+            </div>
+            <button type="submit" class="btn">S'inscrire</button>
+        </form>
+
+        <!-- Formulaire de connexion -->
+        <form id="login-form" class="form hidden" onsubmit="handleSubmit(event)">
+            <div class="form-group">
+                <label for="login-email">Email</label>
+                <input type="email" id="login-email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Mode de passe</label>
+                <input type="password" id="login-password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Se connecter</button>
+        </form>
+
+        <div class="links">
+            <button type="button" class="btn toggle-btn" id="toggle-form-btn" onclick="toggleForm()">Se connecter</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleForm() {
+            const registrationForm = document.getElementById('registration-form');
+            const loginForm = document.getElementById('login-form');
+            const toggleBtn = document.getElementById('toggle-form-btn');
+            const formTitle = document.getElementById('form-title');
+
+            if (registrationForm.classList.contains('hidden')) {
+                registrationForm.classList.remove('hidden');
+                loginForm.classList.add('hidden');
+                toggleBtn.textContent = 'Se connecter';
+                formTitle.textContent = 'BIENVENUE SUR LA PLATEFORME MEXICOM';
+            } else {
+                registrationForm.classList.add('hidden');
+                loginForm.classList.remove('hidden');
+                toggleBtn.textContent = 'S\'inscrire';
+                formTitle.textContent = 'CONNEXION À MEXICOM';
+            }
+        }
+
+        function handleSubmit(event) {
+            event.preventDefault(); // Empêche l'envoi du formulaire pour gérer la redirection
+
+            // Redirige vers le lien après soumission du formulaire
+            window.location.href = "https://mexicom.github.io/Mexicom/index.html";
+        }
+    </script>
+</body>
+</html>
